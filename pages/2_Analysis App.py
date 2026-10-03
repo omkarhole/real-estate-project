@@ -219,7 +219,7 @@ group_df = (
     .reset_index()
 )
 map_df = group_df.dropna(subset=["latitude", "longitude"])
-map_figure = px.scatter_geo(
+map_figure = px.scatter_mapbox(
     map_df,
     lat="latitude",
     lon="longitude",
@@ -232,22 +232,13 @@ map_figure = px.scatter_geo(
         [0.5, "#f59e0b"],
         [1.0, "#dc2626"],
     ],
-    projection="natural earth",
-    fitbounds="locations",
+    zoom=10,
     height=520,
+    mapbox_style="open-street-map",
     title="Average price per sqft by sector",
-)
-map_figure.update_geos(
-    showcountries=True,
-    showland=True,
-    landcolor="#e8f5e9",
-    countrycolor="#9e9e9e",
-    showocean=True,
-    oceancolor="#dbeafe",
 )
 map_figure.update_layout(
     margin={"l": 0, "r": 0, "t": 45, "b": 0},
-    geo={"showframe": False},
 )
 st.plotly_chart(map_figure, width="stretch")
 
