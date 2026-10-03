@@ -18,5 +18,3 @@ and property price prediction using a saved machine-learning pipeline.
    streamlit run Home.py
    ```
 
-The model and dataset files (`pipeline.pkl` and `df.pkl`) are included in the
-repository and are loaded by the Streamlit pages at runtime.
