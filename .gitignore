@@ -1,0 +1,11 @@
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.streamlit/secrets.toml
+.DS_Store
+.env
+.env.*
+!.env.example
+.vscode/*
+!.vscode/settings.json
