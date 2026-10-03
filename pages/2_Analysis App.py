@@ -83,8 +83,8 @@
 # plt.legend()
 # st.pyplot(fig3)
 
-
 # optmized version of the above code
+
 import pickle
 
 import matplotlib.pyplot as plt
@@ -219,7 +219,7 @@ group_df = (
     .reset_index()
 )
 map_df = group_df.dropna(subset=["latitude", "longitude"])
-map_figure = px.scatter_mapbox(
+map_figure = px.scatter_map(
     map_df,
     lat="latitude",
     lon="longitude",
@@ -234,7 +234,7 @@ map_figure = px.scatter_mapbox(
     ],
     zoom=10,
     height=520,
-    mapbox_style="open-street-map",
+    map_style="open-street-map",
     title="Average price per sqft by sector",
 )
 map_figure.update_layout(margin={"l": 0, "r": 0, "t": 45, "b": 0})
