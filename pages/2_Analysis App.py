@@ -172,7 +172,7 @@ with st.sidebar:
     )
     st.button(
         "Reset filters",
-        use_container_width=True,
+        width="stretch",
         on_click=reset_filters,
     )
 
@@ -238,7 +238,7 @@ map_figure = px.scatter_mapbox(
     title="Average price per sqft by sector",
 )
 map_figure.update_layout(margin={"l": 0, "r": 0, "t": 45, "b": 0})
-st.plotly_chart(map_figure, use_container_width=True)
+st.plotly_chart(map_figure, width="stretch")
 
 top_sectors = (
     new_df.groupby("sector", as_index=False)
@@ -294,11 +294,11 @@ with wordcloud_column:
     wordcloud_axis.imshow(wordcloud, interpolation="bilinear")
     wordcloud_axis.axis("off")
     wordcloud_figure.tight_layout(pad=0)
-    st.pyplot(wordcloud_figure, use_container_width=True)
+    st.pyplot(wordcloud_figure, width="stretch")
     plt.close(wordcloud_figure)
 
 with inventory_column:
-    st.plotly_chart(sector_figure, use_container_width=True)
+    st.plotly_chart(sector_figure, width="stretch")
 
 # Interactive comparisons
 st.header("Price and Property Comparisons")
@@ -326,7 +326,7 @@ with area_column:
         color_continuous_scale="Viridis",
     )
     area_figure.update_layout(height=430, margin={"l": 0, "r": 0, "t": 45, "b": 0})
-    st.plotly_chart(area_figure, use_container_width=True)
+    st.plotly_chart(area_figure, width="stretch")
 
 with bhk_column:
     bhk_counts = (
@@ -379,7 +379,7 @@ with bhk_column:
             "font": {"size": 11},
         },
     )
-    st.plotly_chart(bhk_figure, use_container_width=True)
+    st.plotly_chart(bhk_figure, width="stretch")
 
 # Additional charts
 chart_column, distribution_column = st.columns(2, gap="large")
@@ -397,7 +397,7 @@ with chart_column:
         title="Price range by bedroom count",
     )
     price_figure.update_layout(height=430, margin={"l": 0, "r": 0, "t": 45, "b": 0})
-    st.plotly_chart(price_figure, use_container_width=True)
+    st.plotly_chart(price_figure, width="stretch")
 
 with distribution_column:
     property_mix = (
@@ -419,4 +419,4 @@ with distribution_column:
         showlegend=False,
         margin={"l": 0, "r": 0, "t": 45, "b": 0},
     )
-    st.plotly_chart(mix_figure, use_container_width=True)
+    st.plotly_chart(mix_figure, width="stretch")
