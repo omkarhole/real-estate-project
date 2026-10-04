@@ -402,23 +402,45 @@ with chart_column:
     st.plotly_chart(price_figure, width="stretch")
 
 with distribution_column:
-    property_mix = (
-        filtered_data["property_type"].value_counts()
-        .rename_axis("property_type")
-        .reset_index(name="listings")
+    property_prices = (
+        filtered_data.groupby("property_type", as_index=False)
+        .agg(
+            average_price=("price", "mean"),
+            median_price=("price", "median"),
+        )
+        .melt(
+            id_vars="property_type",
+            var_name="price_type",
+            value_name="price",
+        )
     )
-    mix_figure = px.bar(
-        property_mix,
+    property_prices["price_type"] = property_prices["price_type"].map(
+        {
+            "average_price": "Average price",
+            "median_price": "Median price",
+        }
+    )
+    price_comparison_figure = px.bar(
+        property_prices,
         x="property_type",
-        y="listings",
-        color="property_type",
-        labels={"property_type": "Property type", "listings": "Listings"},
-        title="Inventory by property type",
-        text_auto=True,
+        y="price",
+        color="price_type",
+        barmode="group",
+        labels={
+            "property_type": "Property type",
+            "price": "Price (Cr)",
+            "price_type": "Measure",
+        },
+        title="Average vs median price by property type",
+        text="price",
     )
-    mix_figure.update_layout(
+    price_comparison_figure.update_traces(
+        texttemplate="₹%{text:.2f} Cr",
+        textposition="outside",
+        hovertemplate="<b>%{x}</b><br>%{fullData.name}: ₹%{y:.2f} Cr<extra></extra>",
+    )
+    price_comparison_figure.update_layout(
         height=430,
-        showlegend=False,
         margin={"l": 0, "r": 0, "t": 45, "b": 0},
     )
-    st.plotly_chart(mix_figure, width="stretch")
+    st.plotly_chart(price_comparison_figure, width="stretch")
