@@ -92,6 +92,7 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 from wordcloud import WordCloud
+from app_style import apply_app_style
 
 
 st.set_page_config(
@@ -99,6 +100,7 @@ st.set_page_config(
     page_icon=":bar_chart:",
     layout="wide",
 )
+apply_app_style()
 
 st.markdown(
     """

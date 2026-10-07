@@ -66,8 +66,10 @@ import pickle
 
 import pandas as pd
 import streamlit as st
+from app_style import apply_app_style
 
 st.set_page_config(page_title="Recommend Apartments", page_icon="🏠", layout="wide")
+apply_app_style()
 st.title("🏠 Apartment Recommendation System")
 
 

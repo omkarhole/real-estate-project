@@ -68,6 +68,7 @@ import streamlit as st
 import pickle
 import pandas as pd
 import numpy as np
+from app_style import apply_app_style
 
 # --------------------------------------------------
 # PAGE CONFIG
@@ -78,6 +79,7 @@ st.set_page_config(
     page_icon="🏠",
     layout="wide"
 )
+apply_app_style()
 
 # --------------------------------------------------
 # LOAD DATA + MODEL
