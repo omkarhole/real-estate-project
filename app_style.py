@@ -68,6 +68,11 @@ def apply_app_style():
             label="Recommend Apartments",
             icon="✨",
         )
+        st.page_link(
+            "pages/4_Model Insights.py",
+            label="Model Insights",
+            icon="🧠",
+        )
         st.markdown(
             """
             <div class="sidebar-credit">

@@ -77,6 +77,7 @@ the terminal.
 | Price Predictor | Estimate a Gurgaon property price |
 | Analysis App | Explore market and location insights |
 | Recommend Apartments | Search nearby and similar apartments |
+| Model Insights | Explain model predictions with SHAP |
 
 ## Project structure
 
@@ -87,7 +88,8 @@ the terminal.
 ├── pages/
 │   ├── 1_Price Predictor.py
 │   ├── 2_Analysis App.py
-│   └── 3_Recommend Appartments.py
+│   ├── 3_Recommend Appartments.py
+│   └── 4_Model Insights.py
 ├── datasets/
 ├── df.pkl
 ├── pipeline.pkl
